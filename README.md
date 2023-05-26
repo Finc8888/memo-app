@@ -13,3 +13,5 @@ alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 ```bash
 sail up
 ```
+## Integration with React
+[Link](https://www.endpointdev.com/blog/2021/05/integrating-laravel-with-a-react-frontend/)
