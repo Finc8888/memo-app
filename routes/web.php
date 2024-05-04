@@ -17,7 +17,8 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/', function () {
-    return view('posts');
+    return view('blog');
+    // return ['name' => 'Bob', 'age' => 23];
 });
 Route::get('/posts/{post}', function ($slug) {
     $path = __DIR__. "/../resources/posts/{$slug}.html";
