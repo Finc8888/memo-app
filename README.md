@@ -19,9 +19,11 @@ docker run --rm \
     laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs
 ```
-2. Run docker using sail
+2. Copy .env.example like .env
+2.1 Run docker using sail
 ```bash
 sail up
 ```
 ## Integration with React
 [Link](https://www.endpointdev.com/blog/2021/05/integrating-laravel-with-a-react-frontend/)
+2.2 Generate API key into UI
