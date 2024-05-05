@@ -20,6 +20,19 @@ Route::get('/', function () {
     return view('blog');
     // return ['name' => 'Bob', 'age' => 23];
 });
+
+// Route::get('/posts', function () {
+//     return view('posts');
+// });
+
+Route::get('/', function () {
+    return view('posts');
+});
+
+Route::get('/post', function () {
+    return view('post');
+});
+
 Route::get('/posts/{post}', function ($slug) {
     $path = __DIR__. "/../resources/posts/{$slug}.html";
     if(! file_exists($path)) {
