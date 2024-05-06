@@ -7,11 +7,7 @@
 </head>
 <body>
     <article>
-        <h1>My first post</h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. At quidem, vero accusantium quis totam illo soluta quisquam accusamus aspernatur earum.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati at enim sit dolorem? Incidunt laborum quo quos corporis aliquam hic ratione molestiae repellat itaque veniam magni dolores nesciunt numquam tenetur amet labore ab pariatur quae, repellendus, quidem ipsa? Fuga eligendi itaque, dolor quia doloremque necessitatibus eveniet odio aliquid! Quasi, blanditiis. 
-        </p>
+        <?= $post ?>
     </article>
     <a href="/">Go back</a>
 
