@@ -37,15 +37,13 @@ Route::get('/', function () {
 // });
 
 Route::get('/posts/{post}', function ($slug) {
-    $path = __DIR__. "/../resources/posts/{$slug}.html";
-    if(! file_exists($path)) {
+    
+    if(! file_exists($path = __DIR__. "/../resources/posts/{$slug}.html")) {
         // ddd('file does not exist');
         return redirect('/');
         // return abort(404);
     }
-    return view('post',
-        [
-            'post' => file_get_contents($path),
-        ]
-    );
+    $post = cache()->remember("post.{$slug}", now()->addMinutes(1), fn() => file_get_contents($path));
+
+    return view('post',['post' => $post,]);
 })->where('post', '[A-z_\-]+');
