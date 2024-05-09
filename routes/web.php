@@ -25,10 +25,26 @@ Route::get('/welcome', function () {
 // });
 
 Route::get('/', function () {
+    // $posts = array_map(function ($file){
+    //     $document = YamlFrontMatter::parseFile($file);
+    //     return new Post(
+    //         $document->title,
+    //         $document->excerpt,
+    //         $document->date,
+    //         $document->body(),
+    //         $document->slug
+    //     );
 
-    $posts = Post::all();
+    // }, $files);
+
     // ddd($posts);
-    return view('posts', ['posts' => $posts]);
+
+    // $document = YamlFrontMatter::parseFile(resource_path("posts/my-forth-post.html"));
+    // ddd($document->date);
+
+    // $posts = Post::all();
+    // // ddd($posts);
+    return view('posts', ['posts' => Post::all()]);
 
 });
 
