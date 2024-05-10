@@ -12,7 +12,7 @@ class Post {
     public $body;
     public $slug;
 
-    public function __construct(string $title, string $excerpt, string $date, mixed $body, string $slug) {
+    public function __construct(string $title, string $excerpt, $date, mixed $body, string $slug) {
         $this->title = $title;
         $this->excerpt = $excerpt;
         $this->date = $date;
@@ -36,15 +36,23 @@ class Post {
 
         // return array_map(fn($file) => $file->getContents(), $files);
 
-        return collect(File::files(resource_path("posts/")))
-        ->map(fn ($file) => YamlFrontMatter::parseFile($file))
-        ->map(fn ($document) => new Post(
-                $document->title,
-                $document->excerpt,
-                $document->date,
-                $document->body(),
-                $document->slug
-            ));
+        // Tkinter commands
+        // cache('posts.all');
+        // cache()->forget('posts.all');
+        // cache()->put('foo', 'bar');
+        // cache()->get('foo');
+        return cache()->rememberForever("posts.all", function() {
+            return collect(File::files(resource_path("posts/")))
+            ->map(fn ($file) => YamlFrontMatter::parseFile($file))
+            ->map(fn ($document) => new Post(
+                    $document->title,
+                    $document->excerpt,
+                    $document->date,
+                    $document->body(),
+                    $document->slug
+                ))
+            ->sortByDesc('date');
+        });
     }
 
     public static function find($slug) {
